@@ -15,20 +15,22 @@
  */
 package org.wildfly.swarm.teiid;
 
-public interface TeiidProperties {
+import org.wildfly.swarm.config.Teiid;
+import org.wildfly.swarm.spi.api.Fraction;
+import org.wildfly.swarm.spi.api.annotations.MarshalDMR;
+import org.wildfly.swarm.spi.api.annotations.WildFlyExtension;
 
-    int DEFAULT_JDBC_PORT = 31000;
-    int DEFAULT_ODBC_PORT = 35432;
+@MarshalDMR
+@WildFlyExtension(module = "org.jboss.teiid", classname = "org.teiid.jboss.TeiidExtension")
+public class TeiidFraction extends Teiid<TeiidFraction> implements Fraction<TeiidFraction> {
+    private static final long serialVersionUID = -6070901334377803127L;
 
-    String JDBC_SOCKET_BINDING_NAME = "teiid-jdbc";
-    String ODBC_SOCKET_BINDING_NAME = "teiid-odbc";
+    public TeiidFraction() {
+    }
 
-    String JDBC_TRANSPORT_NAME = "jdbc";
-    String ODBC_TRANSPORT_NAME = "odbc";
-
-    String PREPARED_INFINISPAN_CACHE_CONTAINER_NAME = "teiid-cache";
-    String RESULTSET_INFINISPAN_CACHE_CONTAINER_NAME = "teiid-cache";
-    String PREPARED_INFINISPAN_CACHE_NAME = "preparedplan";
-    String RESULTSET_INFINISPAN_CACHE_NAME = "resultset";
-    String RESULTSET_REPL_INFINISPAN_CACHE_NAME = "resultset-repl";
+    @Override
+    public TeiidFraction applyDefaults() {
+        return this;
+    }
 }
+

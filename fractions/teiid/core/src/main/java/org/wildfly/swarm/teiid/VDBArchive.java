@@ -15,30 +15,16 @@
  */
 package org.wildfly.swarm.teiid;
 
-import java.io.IOException;
-import java.io.InputStream;
-
 import org.jboss.shrinkwrap.api.Archive;
 import org.jboss.shrinkwrap.api.Assignable;
+import org.jboss.shrinkwrap.api.container.LibraryContainer;
+import org.jboss.shrinkwrap.api.container.ResourceContainer;
+import org.wildfly.swarm.spi.api.DependenciesContainer;
 
 /**
- * Provide a way to deploy vdb xml
- * @author kylin
- *
+ * VDB Archive descriptor.
  */
-public interface VDBArchive extends Assignable, Archive<VDBArchive> {
+public interface VDBArchive extends Assignable, LibraryContainer<VDBArchive>, ResourceContainer<VDBArchive>,
+DependenciesContainer<VDBArchive>, Archive<VDBArchive> {
 
-    /**
-     * Form a VDBArchive by a -vdb.xml name, the -vdb.xml either can be under class path, or under current folder
-     * @param name
-     * @return
-     */
-    VDBArchive vdb(String name) throws IOException;
-
-    /**
-     * Form a VDBArchive by a -vdb.xml by InputStream
-     * @param in
-     * @return
-     */
-    VDBArchive vdb(InputStream in) throws IOException;
 }

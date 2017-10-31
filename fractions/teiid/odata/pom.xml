@@ -7,9 +7,9 @@
 		<artifactId>teiid-fraction</artifactId>
 		<version>2017.11.0-SNAPSHOT</version>
 	</parent>
-	<artifactId>teiid</artifactId>
-	<name>teiid</name>
-	<description>A data virtualization system that allows applications to use data from multiple, heterogeneous data stores.</description>
+	<artifactId>odata</artifactId>
+	<name>OData Fraction</name>
+	<description>Exposes OData REST interface on configured source</description>
 
 	<packaging>jar</packaging>
 
@@ -23,30 +23,10 @@
 			<groupId>org.wildfly.swarm</groupId>
 			<artifactId>container</artifactId>
 		</dependency>
-
+		
 		<dependency>
-			<groupId>org.wildfly.swarm</groupId>
-			<artifactId>infinispan</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.wildfly.swarm</groupId>
-			<artifactId>datasources</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.wildfly.swarm</groupId>
-			<artifactId>resource-adapters</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.wildfly.swarm</groupId>
-			<artifactId>jca</artifactId>
-		</dependency>
-
-		<dependency>
-			<groupId>org.wildfly.swarm</groupId>
-			<artifactId>teiid-config-api</artifactId>
+		  <groupId>org.wildfly.swarm</groupId>
+		  <artifactId>undertow</artifactId>
 		</dependency>
 
 		<dependency>
@@ -60,41 +40,26 @@
 			<artifactId>cdi-api</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>org.jboss.logging</groupId>
-			<artifactId>jboss-logging-annotations</artifactId>
-			<!-- This is a compile-time dependency of this project, but is not needed 
-				at compile or runtime by other projects that depend on this project. -->
-			<scope>provided</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.logging</groupId>
-			<artifactId>jboss-logging-processor</artifactId>
-			<!-- This is a compile-time dependency of this project, but is not needed 
-				at compile or runtime by other projects that depend on this project. -->
-			<scope>provided</scope>
-			<optional>true</optional>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.teiid</groupId>
-			<artifactId>teiid-api</artifactId>
-			<scope>provided</scope>
-			<version>${version.teiid}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.teiid</groupId>
-			<artifactId>teiid-common-core</artifactId>
-			<scope>provided</scope>
-			<version>${version.teiid}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.teiid</groupId>
-			<artifactId>teiid-admin</artifactId>
-			<scope>provided</scope>
-			<version>${version.teiid}</version>
-		</dependency>
 
+		<dependency>
+			<groupId>org.wildfly.swarm</groupId>
+			<artifactId>teiid</artifactId>
+		</dependency>
+		
+        <dependency>
+            <groupId>org.jboss.teiid</groupId>
+            <artifactId>teiid-olingo</artifactId>
+            <version>${version.teiid}</version>
+        </dependency>
+        		
+        <dependency>
+            <groupId>org.jboss.teiid</groupId>
+            <artifactId>teiid-olingo</artifactId>
+            <classifier>odata4</classifier>
+            <type>war</type>
+            <version>${version.teiid}</version>
+        </dependency>
+                		
 		<dependency>
 			<groupId>org.wildfly.core</groupId>
 			<artifactId>wildfly-core-feature-pack</artifactId>
@@ -158,7 +123,19 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
-
+        <dependency>
+            <groupId>org.jboss.teiid</groupId>
+            <artifactId>olingo-feature-pack</artifactId>
+            <version>${version.teiid}</version>
+            <type>zip</type>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>*</groupId>
+                    <artifactId>*</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
 		<dependency>
 			<groupId>org.jboss.teiid</groupId>
 			<artifactId>rest-service-feature-pack</artifactId>

@@ -40,6 +40,7 @@ public class DefaultVDBDeploymentFactory extends DefaultDeploymentFactory {
         final VDBArchive archive = ShrinkWrap.create(VDBArchive.class, determineName());
         final DefaultDeploymentFactory factory = new DefaultVDBDeploymentFactory();
         factory.setup(archive);
+        archive.addAllDependencies();
         return archive;
     }
 
@@ -73,8 +74,8 @@ public class DefaultVDBDeploymentFactory extends DefaultDeploymentFactory {
                 @Override
                 public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
                     Path simple = classes.relativize(file);
-                    archive.add(new FileAsset(file.toFile()), "WEB-INF/classes/" + convertSeparators(simple));
-                    if (simple.toString().contains("WEB-INF")) {
+                    archive.add(new FileAsset(file.toFile()), "classes/" + convertSeparators(simple));
+                    if (simple.toString().contains("config")) {
                         archive.add(new FileAsset(file.toFile()), convertSeparators(simple));
                     }
                     return super.visitFile(file, attrs);

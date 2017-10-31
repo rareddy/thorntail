@@ -8,7 +8,7 @@
 		<version>2017.11.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>teiid</artifactId>
-	<name>teiid</name>
+	<name>Teiid</name>
 	<description>A data virtualization system that allows applications to use data from multiple, heterogeneous data stores.</description>
 
 	<packaging>jar</packaging>

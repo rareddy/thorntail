@@ -62,6 +62,9 @@ public class TransportCustomizer implements Customizer {
 
     @Override
     public void customize() {
+        this.fraction.transport("local");
+        this.fraction.transport("odata");
+
         if (enableJDBC.get()) {
             this.group.socketBinding(new SocketBinding("teiid-jdbc").port(jdbcPort.get()));
             this.fraction.transport("jdbc", t -> t.socketBinding("teiid-jdbc").protocol(Transport.Protocol.TEIID));

@@ -15,12 +15,23 @@
  */
 package org.wildfly.swarm.odata;
 
+import static org.wildfly.swarm.spi.api.Defaultable.string;
+
+import org.wildfly.swarm.spi.api.Defaultable;
 import org.wildfly.swarm.spi.api.Fraction;
 import org.wildfly.swarm.spi.api.annotations.Configurable;
-import org.wildfly.swarm.spi.api.annotations.DeploymentModule;
 
-@DeploymentModule(name = "org.jboss.teiid.olingo")
-@Configurable("swarm.odata")
 public class ODataFraction implements Fraction<ODataFraction> {
 
+    @Configurable("swarm.odata.context")
+    private Defaultable<String> context = string("odata4");
+
+    public String getContext() {
+        return context.get();
+    }
+
+    @Override
+    public ODataFraction applyDefaults(boolean hasConfiguration) {
+        return Fraction.super.applyDefaults(hasConfiguration);
+    }
 }

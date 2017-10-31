@@ -16,10 +16,6 @@
 	<artifactId>teiid-fraction</artifactId>
 	<packaging>pom</packaging>
 
-	<properties>
-		<version.teiid>9.3.0.Final</version.teiid>
-	</properties>
-
 	<modules>
 		<module>core</module>
 		<module>components</module>
